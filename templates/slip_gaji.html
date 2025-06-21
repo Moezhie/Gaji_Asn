@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slip Gaji</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .box { border: 1px solid #ccc; padding: 20px; max-width: 600px; margin: auto; }
+    h2 { text-align: center; }
+    ul { list-style: none; padding: 0; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Slip Gaji ASN</h2>
+    <p><strong>Nama:</strong> {{ p.nama }}</p>
+    <p><strong>NIP:</strong> {{ p.nip }}</p>
+    <p><strong>Golongan:</strong> {{ p.golongan }}</p>
+    <p><strong>Status Pegawai:</strong> {{ p.status_pegawai }}</p>
+    <p><strong>Status Kawin:</strong> {{ p.status_kawin }}</p>
+    <p><strong>Jumlah Anak:</strong> {{ p.jumlah_anak }}</p>
+    <p><strong>Jumlah Tanggungan:</strong> {{ p.jumlah_jiwa }}</p>
+    <hr>
+    <h4>Penghasilan</h4>
+    <ul>
+      <li>Gaji Pokok: Rp {{ "{:,.0f}".format(p.gaji_pokok) }}</li>
+      <li>Tunjangan Pasangan: Rp {{ "{:,.0f}".format(p.tunjangan_pasangan) }}</li>
+      <li>Tunjangan Anak: Rp {{ "{:,.0f}".format(p.tunjangan_anak) }}</li>
+    </ul>
+
+    <h4>Potongan</h4>
+    <ul>
+      <li>Potongan Pajak: Rp {{ "{:,.0f}".format(p.potongan_pajak) }}</li>
+      <li>BPJS: Rp {{ "{:,.0f}".format(p.bpjs) }}</li>
+    </ul>
+
+    <h3>Gaji Bersih: Rp {{ "{:,.0f}".format(p.gaji_bersih) }}</h3>
+
+    <br>
+    <button onclick="window.print()">🖨 Cetak Slip Ini</button>
+  </div>
+</body>
+</html>

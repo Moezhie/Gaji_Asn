@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Input Data ASN</title>
+  <script>
+    function toggleGolongan() {
+      const status = document.getElementById("status_pegawai").value;
+      const label = document.getElementById("label_golongan");
+      const input = document.getElementById("golongan");
+      if (status === "PNS" || status === "PPPK") {
+        label.style.display = input.style.display = "block";
+      } else {
+        label.style.display = input.style.display = "none";
+      }
+    }
+
+    function hitungTanggungan() {
+      const status = document.getElementById("status_kawin").value;
+      const jumlahAnak = parseInt(document.getElementById("jumlah_anak").value || 0);
+      let total = 1 + jumlahAnak;
+      if (status === "Kawin") total += 1; // pasangan
+      document.getElementById("jumlah_jiwa").value = total;
+    }
+  </script>
+</head>
+<body onload="toggleGolongan(); hitungTanggungan()">
+  <h2>Form Input Gaji ASN</h2>
+  <form method="POST">
+    Nama:<br><input name="nama" required><br>
+    Tanggal Lahir:<br><input type="date" name="tanggal_lahir"><br>
+    NIP:<br><input name="nip" required><br>
+
+    Status Pegawai:<br>
+    <select name="status_pegawai" id="status_pegawai" onchange="toggleGolongan()" required>
+      <option value="">--Pilih--</option>
+      <option value="PNS">PNS</option>
+      <option value="PPPK">PPPK</option>
+    </select><br>
+
+    <label id="label_golongan" style="display:none;">Golongan:</label><br>
+    <input name="golongan" id="golongan" style="display:none;"><br>
+
+    NPWP:<br><input name="npwp"><br>
+
+    Status Kawin:<br>
+    <select name="status_kawin" id="status_kawin" onchange="hitungTanggungan()" required>
+      <option value="">--Pilih--</option>
+      <option value="Kawin">Kawin</option>
+      <option value="Tidak Kawin">Tidak Kawin</option>
+    </select><br>
+
+    Jumlah Anak:<br>
+    <input type="number" name="jumlah_anak" id="jumlah_anak" value="0" onchange="hitungTanggungan()" required><br>
+
+    Jumlah Jiwa (Otomatis):<br>
+    <input type="number" name="jumlah_jiwa" id="jumlah_jiwa" readonly><br>
+
+    Gaji Pokok:<br><input type="number" name="gaji_pokok" step="any"><br>
+    Tunjangan Pasangan:<br><input type="number" name="tunjangan_pasangan" step="any"><br>
+    Tunjangan Anak:<br><input type="number" name="tunjangan_anak" step="any"><br>
+    Potongan Pajak:<br><input type="number" name="potongan_pajak" step="any"><br>
+    BPJS:<br><input type="number" name="bpjs" step="any"><br><br>
+
+    <button type="submit">Simpan</button>
+  </form>
+</body>
+</html>

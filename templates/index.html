@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard Gaji ASN</title>
+  <style>
+    table, th, td {
+      border: 1px solid #666;
+      border-collapse: collapse;
+      padding: 8px;
+    }
+    th { background: #f0f0f0; }
+  </style>
+</head>
+<body>
+  <h2>Rekap Gaji ASN</h2>
+
+  <form method="GET">
+    Filter Status:
+    <select name="status">
+      <option value="">Semua</option>
+      <option value="PNS">PNS</option>
+      <option value="PPPK">PPPK</option>
+    </select>
+    <button type="submit">Tampilkan</button>
+  </form>
+
+  <p>
+    <a href="/input">+ Tambah Pegawai</a> |
+    <a href="/export">🗂 Ekspor CSV</a> |
+    <a href="/logout">Keluar</a>
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nama</th>
+        <th>NIP</th>
+        <th>Status</th>
+        <th>Golongan</th>
+        <th>NPWP</th>
+        <th>Status Kawin</th>
+        <th>Jumlah Anak</th>
+        <th>Jumlah Jiwa</th>
+        <th>Gaji Bersih</th>
+        <th>Slip</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in pegawai %}
+      <tr>
+        <td>{{ p.nama }}</td>
+        <td>{{ p.nip }}</td>
+        <td>{{ p.status_pegawai }}</td>
+        <td>{{ p.golongan }}</td>
+        <td>{{ p.npwp }}</td>
+        <td>{{ p.status_kawin }}</td>
+        <td>{{ p.jumlah_anak }}</td>
+        <td>{{ p.jumlah_jiwa }}</td>
+        <td>Rp {{ '{:,.0f}'.format(p.gaji_bersih) }}</td>
+        <td><a href="/cetak/{{ p.id }}" target="_blank">🖨 Cetak</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

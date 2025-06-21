@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Login Gaji ASN</title>
+  <style>
+    body {
+      display: flex; justify-content: center; align-items: center;
+      height: 100vh; background: #f2f2f2; font-family: sans-serif;
+    }
+    .card {
+      background: white; padding: 25px; border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 320px;
+      text-align: center;
+    }
+    input {
+      width: 100%; padding: 10px; margin: 10px 0;
+      border-radius: 5px; border: 1px solid #ccc;
+    }
+    .form-links a {
+      display: block; font-size: 14px; color: #0066cc;
+      margin-top: 5px; text-decoration: none;
+    }
+    .form-links a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Login Aplikasi Gaji ASN</h2>
+    <form method="POST">
+      <input name="username" placeholder="👤 Username" required>
+      <input type="password" name="password" id="password" placeholder="🔒 Password" required>
+      <div style="text-align:right;font-size:13px;">
+        <input type="checkbox" onclick="togglePassword()"> Lihat Password
+      </div>
+      <button type="submit" style="width:100%;padding:10px;">Masuk</button>
+    </form>
+    <div class="form-links">
+      <a href="/lupa">🔑 Lupa Username/Kata Sandi</a>
+      <a href="/daftar">📝 Daftar User Baru</a>
+    </div>
+  </div>
+  <script>
+    function togglePassword() {
+      let x = document.getElementById("password");
+      x.type = (x.type === "password") ? "text" : "password";
+    }
+  </script>
+</body>
+</html>
