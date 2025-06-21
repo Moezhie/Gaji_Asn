@@ -1,3 +1,6 @@
+![Made with Flask](https://img.shields.io/badge/Made%20with-Flask-blue)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
 # Gaji ASN - Aplikasi Penggajian PNS & PPPK
 
 Aplikasi web berbasis Flask untuk menghitung, menampilkan, dan mencetak slip gaji ASN (PNS & PPPK).
